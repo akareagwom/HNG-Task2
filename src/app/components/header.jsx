@@ -28,21 +28,7 @@ const PageOne = () => {
       },[])
     return ( 
         <>
-         <Flex
-        bg=""
-        justifyContent="space-around"
-        mt={'4'}
-        
-        >
-          <Image src="logo.png"/>
-
-          <Input color={"white"} w="40%" placeholder='What do you want to watch?' />
-
-          <Box>
-            <Text>SignIn</Text>
-          </Box>
-      
-        </Flex>
+         
         <Carousel
         showThumbs={false}
         autoPlay={true}
@@ -52,22 +38,52 @@ const PageOne = () => {
             {popularMovies.map(movie=>(
                     
                 <Box
+                pos='relative'
+                bg='none'
                 >
-                     <Box>
-                            <Image src={`https://image.tmdb.org/t/p/original${movie&&movie.backdrop_path}`}/>
-                        </Box>
-                        
-                    <Box ml="10%" mt="10%" w="30%">
-                        <Heading>
-                            {movie ? movie.original_title:""}
-                        </Heading>
-                        <Flex justifyContent={'space-around'}>
-                            {movie ? movie.release_date:""}
+                     <Box top="0" pos={'relative'} >
+                            <Image h={'100vh'} w="100%" filter="auto" brightness={'50%'} src={`https://image.tmdb.org/t/p/original${movie&&movie.backdrop_path}`}/>
+                    </Box>
+                    <Box 
+                    pos="absolute"
+                    top="0"
+                    >
+                        <Box>
+            <Flex
+            alignItems={'center'}
+            justifyContent="space-around"
+            mt={'4'}
+                                
+            >
+                <Box>
+                    <Image w="4%"  src="logo.png"/>
+                </Box>
+
+                <Input color={"white"} w="40%" placeholder='What do you want to watch?' />
+
+                <Box>
+                    <Text>SignIn</Text>
+                </Box>
+                            
+            </Flex>
+         </Box>
+                            
+                        <Box ml="5%" fontSize={'14px'} mt="15%" w="35%">
+                            <Heading fontSize={'2xl'}>
+                                {movie ? movie.original_title:""}
+                            </Heading>
+                            <Flex justifyContent={'space-around'}>
+                                {movie ? movie.release_date:""}
+                                <Text>
+                                {movie ? movie.vote_average:""} 
+                                </Text>
+                            </Flex>
                             <Text>
-                            {movie ? movie.vote_average:""} 
+                            {movie ? movie.overview:""} 
                             </Text>
-                        </Flex>
-                    <Button>Watch Trailer</Button>
+                            <Button bg={'purple.400'}>Watch Trailer</Button>
+
+                        </Box>
 
                     </Box>
                 </Box>
