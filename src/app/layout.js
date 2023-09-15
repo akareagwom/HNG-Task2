@@ -1,6 +1,6 @@
 // import './globals.css'
 import { Inter } from 'next/font/google'
-import { createContext } from 'react';
+import { createContext,useLayoutEffect,useRef } from 'react';
 
 import { ChakraProvider } from '@chakra-ui/react';
 
