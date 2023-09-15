@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -42,7 +43,7 @@ const PageOne = () => {
                 bg='none'
                 >
                      <Box top="0" pos={'relative'} >
-                            <Image h={'100vh'} w="100%" filter="auto" brightness={'50%'} src={`https://image.tmdb.org/t/p/original${movie&&movie.backdrop_path}`}/>
+                            <Image h={'100vh'} w="100%" filter="auto" brightness={'50%'} alt='asset' src={`https://image.tmdb.org/t/p/original${movie&&movie.backdrop_path}`}/>
                     </Box>
                     <Box 
                     pos="absolute"
@@ -56,7 +57,7 @@ const PageOne = () => {
                                 
             >
                 <Box>
-                    <Image w="4%"  src="logo.png"/>
+                    <Image w="4%" alt='asset'  src="logo.png"/>
                 </Box>
 
                 <Input color={"white"} w="40%" placeholder='What do you want to watch?' />
