@@ -20,7 +20,7 @@ const FeatMovie = ({movie}) => {
             <Flex justifyContent={'space-between'} alignItems={'center'}>
                 <Heading>Featured Movies</Heading>
                 <Flex>
-                    <Text>See More</Text>
+                    <Text>Seen More</Text>
                 </Flex>
             </Flex>
 
