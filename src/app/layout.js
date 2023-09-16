@@ -1,4 +1,4 @@
-// import './globals.css'
+"use client"
 import { Inter } from 'next/font/google'
 import { createContext,useLayoutEffect,useRef } from 'react';
 
