@@ -39,6 +39,7 @@ const PageOne = () => {
             {popularMovies.map(movie=>(
                     
                 <Box
+                key={movie.id}
                 pos='relative'
                 bg='none'
                 >
