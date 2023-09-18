@@ -71,16 +71,16 @@ const PageOne = () => {
          </Box>
                             
                         <Box ml="5%" fontSize={'14px'} mt="15%" w="35%">
-                            <Heading fontSize={'2xl'}>
+                            <Heading color='white' fontSize={'2xl'}>
                                 {movie ? movie.original_title:""}
                             </Heading>
-                            <Flex justifyContent={'space-around'}>
+                            <Flex color='white' justifyContent={'space-around'}>
                                 {movie ? movie.release_date:""}
                                 <Text>
                                 {movie ? movie.vote_average:""} 
                                 </Text>
                             </Flex>
-                            <Text>
+                            <Text color='white'>
                             {movie ? movie.overview:""} 
                             </Text>
                             <Button bg={'purple.400'}>Watch Trailer</Button>
