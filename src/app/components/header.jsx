@@ -99,14 +99,13 @@ const PageOne = () => {
                 ))}
                 </Carousel>
                 <Heading>Popular Movies</Heading>
+                    <Flex flexWrap={'wrap'} justifyContent={'space-between'} p="20px" columns={4} gap={1} >
                {popularMovies.map(movie=>( <Flex>
                 <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
-                    <SimpleGrid columns={3} >
                         
-                           <Box>
-
-                                <Image alt='asset' w='25%' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
-                                <Box>
+                           <Box >
+                                <Image alt='asset' w='200px' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
+                                <Box w={'100px'}>
                                     <Text>{movie?movie.original_title:""}</Text>
                                     <Text>
                                         {movie?movie.release_date:""}
@@ -116,9 +115,9 @@ const PageOne = () => {
                                 </Box>
                            </Box>
                        
-                    </SimpleGrid>
                 </Link> 
                 </Flex>))}
+                    </Flex>
          
         </>
      );
