@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { Box, Image, Input,Flex,Text, Heading ,Button,Link} from '@chakra-ui/react'
+import { Box, Image, Card, CardBody, SimpleGrid,Input,Flex,Text, Heading ,Button,Link} from '@chakra-ui/react'
 // import Link from 'next/link';
 import NextLink from 'next/link'
 
@@ -31,14 +31,15 @@ const PageOne = () => {
     return ( 
         <>
          
-        <Carousel
-        showThumbs={false}
-        autoPlay={true}
-        infiniteLoop={true}
-        showStatus={false}
-        >
+         <Carousel
+         showThumbs={false}
+         autoPlay={true}
+         infiniteLoop={true}
+         showStatus={false}
+         >
             {popularMovies.map(movie=>(
-                  <Link as={NextLink} href={`https://movie/${movie.id}`} isExternal> 
+              <Box>
+                    <Link as={NextLink} href={`https://movie/${movie.id}`} isExternal> 
                 <Box
                 key={movie.id}
                 pos='relative'
@@ -90,11 +91,34 @@ const PageOne = () => {
 
                     </Box>
                 </Box>
-                
+
                 </Link>
-                ))}
-        </Carousel>
                 
+              </Box>
+                
+                ))}
+                </Carousel>
+                <Heading>Popular Movies</Heading>
+               {popularMovies.map(movie=>( <Flex>
+                <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
+                    <SimpleGrid columns={3} >
+                        
+                           <Box>
+
+                                <Image alt='asset' w='25%' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
+                                <Box>
+                                    <Text>{movie?movie.original_title:""}</Text>
+                                    <Text>
+                                        {movie?movie.release_date:""}
+                                        {movie?movie.vote_average:""}
+                                    </Text>
+                                    
+                                </Box>
+                           </Box>
+                       
+                    </SimpleGrid>
+                </Link> 
+                </Flex>))}
          
         </>
      );

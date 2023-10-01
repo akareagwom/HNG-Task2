@@ -16,9 +16,9 @@ export default function Home() {
       <Box h="100vh">
       <PageOne/>
       </Box>
-      <Box>
+      {/* <Box>
         <FeatMovie/>
-      </Box>
+      </Box> */}
 
     </>
   )

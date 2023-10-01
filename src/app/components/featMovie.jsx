@@ -33,18 +33,23 @@ const FeatMovie = ({movie}) => {
                     </SkeletonTheme>
                 </Card>
                 :
-                <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
+                // <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
                     <SimpleGrid columns={3} spacing={10}>
                         <Card>
                             <CardBody>
                                 <Image alt='asset' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
                                 <Box>
-                                    <Text>{}</Text>
+                                    <Text>{movie?movie.original_title:""}</Text>
+                                    <Text>
+                                        {movie?movie.release_date:""}
+                                        {movie?movie.vote_average:""}
+                                    </Text>
+                                    
                                 </Box>
                             </CardBody>
                         </Card>
                     </SimpleGrid>
-                </Link>
+                // </Link>
             }
         </Box>
      );
