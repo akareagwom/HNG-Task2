@@ -2,7 +2,8 @@
 import { Box, Card, CardBody, SimpleGrid,Image,Flex, Heading,Text } from "@chakra-ui/react";
 import Skeleton,{SkeletonTheme} from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import {useEffect,useState} from 'react'
+import {useEffect,useState} from 'react';
+import {Link} from 'react-router-dom'
 
 const FeatMovie = ({movie}) => {
     const [isLoading,setIsLoading] = useState(true)
@@ -27,21 +28,23 @@ const FeatMovie = ({movie}) => {
             { 
                 isLoading ?
                 <Card>
-                    <SkeletonTheme>
+                    <SkeletonTheme color="#202020" highlightColor="#444">
                         <Skeleton height={300} />
                     </SkeletonTheme>
                 </Card>
                 :
-                <SimpleGrid columns={3} spacing={10}>
-                    <Card>
-                        <CardBody>
-                            <Image alt='asset' src=""/>
-                            <Box>
-                                <Text>heelllloo</Text>
-                            </Box>
-                        </CardBody>
-                    </Card>
-                </SimpleGrid>
+                <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
+                    <SimpleGrid columns={3} spacing={10}>
+                        <Card>
+                            <CardBody>
+                                <Image alt='asset' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
+                                <Box>
+                                    <Text>{}</Text>
+                                </Box>
+                            </CardBody>
+                        </Card>
+                    </SimpleGrid>
+                </Link>
             }
         </Box>
      );

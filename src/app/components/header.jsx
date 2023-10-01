@@ -2,8 +2,9 @@
 import { useEffect, useState } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { Box, Image, Input,Flex,Text, Heading ,Button} from '@chakra-ui/react'
-import Link from 'next/link';
+import { Box, Image, Input,Flex,Text, Heading ,Button,Link} from '@chakra-ui/react'
+// import Link from 'next/link';
+import NextLink from 'next/link'
 
 const PageOne = () => {
     const [popularMovies,setPopularMovies] = useState([])
@@ -37,7 +38,7 @@ const PageOne = () => {
         showStatus={false}
         >
             {popularMovies.map(movie=>(
-                    
+                  <Link as={NextLink} href={`https://movie/${movie.id}`} isExternal> 
                 <Box
                 key={movie.id}
                 pos='relative'
@@ -61,7 +62,7 @@ const PageOne = () => {
                     <Image w="4%" alt='asset'  src="logo.png"/>
                 </Box>
 
-                <Input color={"white"} w="40%" placeholder='What do you want to watch?' />
+                <Input border='1px solid white' color={"white"} w="40%" placeholder='What do you want to watch?' />
 
                 <Box>
                     <Text>SignIn</Text>
@@ -83,13 +84,14 @@ const PageOne = () => {
                             <Text color='white'>
                             {movie ? movie.overview:""} 
                             </Text>
-                            <Button bg={'purple.400'}>Watch Trailer</Button>
+                            <Button mt='2' bg={'red.600'}>Watch Trailer</Button>
 
                         </Box>
 
                     </Box>
                 </Box>
                 
+                </Link>
                 ))}
         </Carousel>
                 
