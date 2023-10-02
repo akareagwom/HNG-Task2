@@ -98,14 +98,38 @@ const PageOne = () => {
                 
                 ))}
                 </Carousel>
-                <Heading>Popular Movies</Heading>
-                    <Flex flexWrap={'wrap'} justifyContent={'space-between'} p="20px" columns={4} gap={1} >
+                <Heading mx={'30px'} my="5px">Popular Movies</Heading>
+                    <Flex flexWrap={'wrap'} gap={1} justifyContent={'center'} p="20px" columns={4} >
                {popularMovies.map(movie=>( <Flex>
                 <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
                         
-                           <Box >
+                           <Box pos={'relative'} my="80px">
+                                <Image pos={'absolute'}  alt='asset' w='200px' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
+                                <Box pos="relative"  top="4" w={'210px'} >
+                                    <Text>{movie?movie.original_title:""}</Text>
+                                    <Text>
+                                        {movie?movie.release_date:""}
+                                        {movie?movie.vote_average:""}
+                                    </Text>
+                                    
+                                    <Box>
+                                    {movie?movie.overview.slice(0,118)+"...":""}
+                                    </Box>
+                                
+                                </Box>
+                           </Box>
+                </Link> 
+                </Flex>))}
+                    </Flex>
+
+                    {/* <Heading mx={'30px'} my="10px">Popular Movies</Heading>
+                    <Flex flexWrap={'wrap'} gap={4} justifyContent={'center'} p="20px" columns={4} >
+               {popularMovies.map(movie=>( <Flex>
+                <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
+                        
+                           <Box m="">
                                 <Image alt='asset' w='200px' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
-                                <Box w={'100px'}>
+                                <Box w={'210px'}>
                                     <Text>{movie?movie.original_title:""}</Text>
                                     <Text>
                                         {movie?movie.release_date:""}
@@ -117,7 +141,7 @@ const PageOne = () => {
                        
                 </Link> 
                 </Flex>))}
-                    </Flex>
+                    </Flex> */}
          
         </>
      );
