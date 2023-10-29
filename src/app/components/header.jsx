@@ -4,7 +4,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { Box, Image, Card, CardBody, SimpleGrid,Input,Flex,Text, Heading ,Button,Link} from '@chakra-ui/react'
 // import Link from 'next/link';
-import NextLink from 'next/link'
+import NextLink from 'next/link';
+import FeatMovie from './featMovie';
+// import {TopBar} from '../../app/components/topBar'
 
 const PageOne = () => {
     const [popularMovies,setPopularMovies] = useState([])
@@ -30,7 +32,8 @@ const PageOne = () => {
       },[])
     return ( 
         <>
-         
+         {/* <TopBar/> */}
+         <FeatMovie/>
          <Carousel
          showThumbs={false}
          autoPlay={true}
@@ -38,7 +41,7 @@ const PageOne = () => {
          showStatus={false}
          >
             {popularMovies.map(movie=>(
-              <Box>
+              <Box key={movie.id}>
                     <Link as={NextLink} href={`https://movie/${movie.id}`} isExternal> 
                 <Box
                 key={movie.id}
@@ -51,27 +54,7 @@ const PageOne = () => {
                     <Box 
                     pos="absolute"
                     top="0"
-                    >
-                        <Box>
-            <Flex
-            alignItems={'center'}
-            justifyContent="space-around"
-            mt={'4'}
-                                
-            >
-                <Box>
-                    <Image w="4%" alt='asset'  src="logo.png"/>
-                </Box>
-
-                <Input border='1px solid white' color={"white"} w="40%" placeholder='What do you want to watch?' />
-
-                <Box>
-                    <Text>SignIn</Text>
-                </Box>
-                            
-            </Flex>
-         </Box>
-                            
+                    >        
                         <Box ml="5%" fontSize={'14px'} mt="15%" w="35%">
                             <Heading color='white' fontSize={'2xl'}>
                                 {movie ? movie.original_title:""}
@@ -98,14 +81,25 @@ const PageOne = () => {
                 
                 ))}
                 </Carousel>
-                <Heading mx={'30px'} my="5px">Popular Movies</Heading>
+                <Heading mx={'30px'} m="10px">Popular Movies</Heading>
                     <Flex flexWrap={'wrap'} gap={1} justifyContent={'center'} p="20px" columns={4} >
                {popularMovies.map(movie=>( <Flex>
                 <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
                         
-                           <Box pos={'relative'} my="80px">
-                                <Image pos={'absolute'}  alt='asset' w='200px' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
-                                <Box pos="relative"  top="4" w={'210px'} >
+                           <Box pos={'relative'} my="30px">
+                                <Image 
+                                pos={'absolute'}  
+                                alt='asset' 
+                                w='200px' 
+                                src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
+                                <Box 
+                                pos="relative" 
+                                fontSize={'12px'} 
+                                textAlign={'center'}
+                                 top="20"
+                                 px={4} 
+                                 py={20}
+                                 w={'210px'} >
                                     <Text>{movie?movie.original_title:""}</Text>
                                     <Text>
                                         {movie?movie.release_date:""}

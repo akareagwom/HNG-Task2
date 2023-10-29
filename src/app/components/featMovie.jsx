@@ -1,56 +1,44 @@
 "use client"
-import { Box, Card, CardBody, SimpleGrid,Image,Flex, Heading,Text } from "@chakra-ui/react";
+import { Box, Card, CardBody, SimpleGrid,Image,Flex,Input, Heading,Text, Button } from "@chakra-ui/react";
 import Skeleton,{SkeletonTheme} from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import {useEffect,useState} from 'react';
-import {Link} from 'react-router-dom'
+// import {useEffect,useState} from 'react';
+// import {Link} from 'react-router-dom'
+// import {logo} from '../assets/logo.png'
 
-const FeatMovie = ({movie}) => {
-    const [isLoading,setIsLoading] = useState(true)
-    useEffect(()=>{
-        setTimeout(()=>{
-            setIsLoading(false)
-        },1500)
-    },[])
+const FeatMovie = () => {
+    // const [isLoading,setIsLoading] = useState(true)
+    // useEffect(()=>{
+    //     setTimeout(()=>{
+    //         setIsLoading(false)
+    //     },1500)
+    // },[])
 
     return ( 
         <Box
-        bg={'white'}
+        bg={''}
         color={'black'}
         >
-            <Flex justifyContent={'space-between'} alignItems={'center'}>
-                <Heading>Featured Movies</Heading>
-                <Flex>
-                    <Text>Seen More</Text>
-                </Flex>
+            <Flex
+            alignItems={'center'}
+            justifyContent="space-around"
+            pb={'2'}
+            pt={'2'}
+                                
+            >
+                <Box>
+                    <Image w="" alt='asset'  src="logo.png"/>
+                </Box>
+
+                <Input border='1px solid white' color={"white"} w="40%" placeholder='What do you want to watch?' />
+
+                <Button bg={'red.500'}>
+                    <Text>SignIn</Text>
+                </Button>
+                            
             </Flex>
 
-            { 
-                isLoading ?
-                <Card>
-                    <SkeletonTheme color="#202020" highlightColor="#444">
-                        <Skeleton height={300} />
-                    </SkeletonTheme>
-                </Card>
-                :
-                // <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
-                    <SimpleGrid columns={3} spacing={10}>
-                        <Card>
-                            <CardBody>
-                                <Image alt='asset' src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`}/>
-                                <Box>
-                                    <Text>{movie?movie.original_title:""}</Text>
-                                    <Text>
-                                        {movie?movie.release_date:""}
-                                        {movie?movie.vote_average:""}
-                                    </Text>
-                                    
-                                </Box>
-                            </CardBody>
-                        </Card>
-                    </SimpleGrid>
-                // </Link>
-            }
+           
         </Box>
      );
 }
