@@ -14,11 +14,11 @@ const PageOne = () => {
     const API_URL = "https://api.themoviedb.org/3/movie/popular"
     const path = '/discover/movie'
   
-   const config= {
-      params: {
+//    const config= {
+//       params: {
         
-      }
-    }
+//       }
+//     }
   
     const fetchMovies = async ()=>{
       const data = await fetch(`${API_URL}?api_key=4e8f0b6dedb49aad4d778b918074e19f`)
