@@ -14,12 +14,6 @@ const PageOne = () => {
     const API_URL = "https://api.themoviedb.org/3/movie/popular"
     const path = '/discover/movie'
   
-//    const config= {
-//       params: {
-        
-//       }
-//     }
-  
     const fetchMovies = async ()=>{
       const data = await fetch(`${API_URL}?api_key=4e8f0b6dedb49aad4d778b918074e19f`)
       .then (res=>res.json())
@@ -35,6 +29,7 @@ const PageOne = () => {
          {/* <TopBar/> */}
          <FeatMovie/>
          <Carousel
+         key={movie.id}
          showThumbs={false}
          autoPlay={true}
          infiniteLoop={true}
@@ -86,7 +81,7 @@ const PageOne = () => {
                {popularMovies.map(movie=>( <Flex>
                 <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
                         
-                           <Box pos={'relative'} my="30px">
+                           <Box key={movie.id} pos={'relative'} my="30px">
                                 <Image 
                                 pos={'absolute'}  
                                 alt='asset' 
