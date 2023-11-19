@@ -78,7 +78,7 @@ const PageOne = () => {
                 </Carousel>
                 <Heading mx={'30px'} m="10px">Popular Movies</Heading>
                     <Flex flexWrap={'wrap'} gap={1} justifyContent={'center'} p="20px" columns={4} >
-               {popularMovies.map(movie=>( <Flex>
+               {popularMovies.map(movie=>( <Flex key={movie.id}>
                 <Link to={`movie/${movie.id}`} style={{textDecoration:"none"}}>
                         
                            <Box key={movie.id} pos={'relative'} my="30px">
